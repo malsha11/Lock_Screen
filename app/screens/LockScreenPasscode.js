@@ -14,80 +14,83 @@ class LockScreenPasscode extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        passcode:['1','','3','']
+      passcode: ['1', '', '3', ''],
     };
   }
 
   render() {
-      let numbers = [{id : 1},
-        {id : 1},
-        {id : 2},
-        {id : 3},
-        {id : 4},
-        {id : 5},
-        {id : 6},
-        {id : 7},
-        {id : 8},
-        {id : 9},
-        {id : 0}
+    let numbers = [
+      {id: 1},
+      {id: 1},
+      {id: 2},
+      {id: 3},
+      {id: 4},
+      {id: 5},
+      {id: 6},
+      {id: 7},
+      {id: 8},
+      {id: 9},
+      {id: 0},
     ];
-  return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content"/>
-      <View style={{marginTop:100,alignItems:'center',justifyContent:'center',}}>
-      <View>
-          <Text style={styles.passCodeText}> Enter your PIN Code</Text>
-      </View>
-      <View style={styles.codeContainer}>
-            {
-                this.state.passcode.map(p => {
-                    let style = p != '' ? styles.code2: styles.code1; 
-                    return <View style={style}></View>;
-                })}
-
-            </View>
+    return (
+      <SafeAreaView style={styles.container}>
+        <StatusBar barStyle="light-content" />
+        <View
+          style={{
+            marginTop: 100,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <View>
+            <Text style={styles.passCodeText}> Enter your PIN Code</Text>
+          </View>
+          <View style={styles.codeContainer}>
+            {this.state.passcode.map(p => {
+              let style = p != '' ? styles.code2 : styles.code1;
+              return <View style={style} />;
+            })}
+          </View>
         </View>
-        <View style={{ alignItems:'center',justifyContent:'center'}}>
-            <View style={styles.numberContainer}>
-                <View style={styles.number}>
-                    <Text style={styles.numText}> 1 </Text>
-                </View>
-                <View style={styles.number}>
-                    <Text style={styles.numText}> 2 </Text>
-                </View>
-                <View style={styles.number}>
-                    <Text style={styles.numText}> 3 </Text>
-                </View>
-                <View style={styles.number}>
-                    <Text style={styles.numText}> 4 </Text>
-                </View>
-                <View style={styles.number}>
-                    <Text style={styles.numText}> 5 </Text>
-                </View>
-                <View style={styles.number}>
-                    <Text style={styles.numText}> 6 </Text>
-                </View>
-                <View style={styles.number}>
-                    <Text style={styles.numText}> 7 </Text>
-                </View>
-                <View style={styles.number}>
-                    <Text style={styles.numText}> 8 </Text>
-                </View>
-                <View style={styles.number}>
-                    <Text style={styles.numText}> 9 </Text>
-                </View>
-                <View style={styles.number}>
-                    <Text style={styles.numText}> 0 </Text>
-                </View>
-                <View style={styles.buttons}>
-            <View>
+        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+          <View style={styles.numberContainer}>
+            <View style={styles.number}>
+              <Text style={styles.numText}> 1 </Text>
+            </View>
+            <View style={styles.number}>
+              <Text style={styles.numText}> 2 </Text>
+            </View>
+            <View style={styles.number}>
+              <Text style={styles.numText}> 3 </Text>
+            </View>
+            <View style={styles.number}>
+              <Text style={styles.numText}> 4 </Text>
+            </View>
+            <View style={styles.number}>
+              <Text style={styles.numText}> 5 </Text>
+            </View>
+            <View style={styles.number}>
+              <Text style={styles.numText}> 6 </Text>
+            </View>
+            <View style={styles.number}>
+              <Text style={styles.numText}> 7 </Text>
+            </View>
+            <View style={styles.number}>
+              <Text style={styles.numText}> 8 </Text>
+            </View>
+            <View style={styles.number}>
+              <Text style={styles.numText}> 9 </Text>
+            </View>
+            <View style={styles.number}>
+              <Text style={styles.numText}> 0 </Text>
+            </View>
+            <View style={styles.buttons}>
+              <TouchableOpacity>
                 <Text style={styles.buttonText}> Cancel </Text>
+              </TouchableOpacity>
             </View>
-            </View>
-            </View>
-           
+          </View>
         </View>
-        </SafeAreaView>
+      </SafeAreaView>
     );
   }
 }
@@ -96,7 +99,6 @@ export default LockScreenPasscode;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    
   },
   passCodeText: {
     fontFamily: 'Roboto-Regular',
@@ -105,83 +107,70 @@ const styles = StyleSheet.create({
     letterSpacing: 0.34,
     lineHeight: 25,
   },
-  codeContainer:{
-      marginTop:12,
-      flexDirection:'row',
-      alignItems:'center',
-      justifyContent:'space-between',
+  codeContainer: {
+    marginTop: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   code1: {
-      width:10,
-      height:12,
-      borderRadius:13,
-      borderWidth:2,
-      borderColor:'#1bddf2',
-      margin:8,
-      backgroundColor:'#1bddf2',
-
+    width: 10,
+    height: 12,
+    borderRadius: 13,
+    borderWidth: 2,
+    borderColor: '#1bddf2',
+    margin: 8,
+    backgroundColor: '#1bddf2',
   },
 
   code2: {
-    width:13,
-    height:16,
-    borderRadius:13,
-    borderWidth:2,
-    borderColor:'#0ba39c',
-    margin:8,
-    backgroundColor:'#0ba39c',
-
-},
-  number:{
-      margin:8,
-      width:75,
-      height:75,
-      borderRadius:75,
-      backgroundColor:'rgba(255,255,255,0.1)',
-      justifyContent:'center',
-      alignItems:'center',
+    width: 13,
+    height: 16,
+    borderRadius: 13,
+    borderWidth: 2,
+    borderColor: '#0ba39c',
+    margin: 8,
+    backgroundColor: '#0ba39c',
   },
-  numberContainer:{
-      flexDirection:'row',
-      flexWrap:'wrap',
-      marginTop:58,
-      width:282,
-      height:348,
-      alignItems:'center',
-      justifyContent:'center',
-      color: '#0a191a',
-      
-      
+  number: {
+    margin: 8,
+    width: 75,
+    height: 75,
+    borderRadius: 75,
+    backgroundColor: 'rgba(255,255,255,0.1)',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  numText:{
-      fontFamily:'SFproDisplay-Regular',
-      fontSize:36,
-      color: '#0a191a',
-      letterSpacing:0,
-      textAlign:'center',
-      
+  numberContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 58,
+    width: 282,
+    height: 348,
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#0a191a',
+  },
+  numText: {
+    fontFamily: 'SFproDisplay-Regular',
+    fontSize: 36,
+    color: '#0a191a',
+    letterSpacing: 0,
+    textAlign: 'center',
   },
 
-  buttons:{
-      marginTop:73,
-      marginLeft:6,
-      marginRight:-65,
-      /*flexDirection:'row',*/
-      alignItems:'center',
-     
-      
+  buttons: {
+    marginTop: 73,
+    marginLeft: 6,
+    marginRight: -65,
+    /*flexDirection:'row',*/
+    alignItems: 'center',
   },
-  buttonText:{
-      fontFamily:'SEProText-Semiblod',
-      fontSize:16,
-      color:'#0a191a',
-      letterSpacing:-0.39,
-      textAlign:'right',
-     
+  buttonText: {
+    fontFamily: 'SEProText-Semiblod',
+    fontSize: 16,
+    color: '#0a191a',
+    letterSpacing: -0.39,
+    textAlign: 'right',
   },
 });
-
-
-
-
-
