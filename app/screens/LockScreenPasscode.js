@@ -18,9 +18,33 @@ class LockScreenPasscode extends Component {
     };
   }
 
+  _onPressNumber = num => {
+      let tempCode = this.state.passcode;
+      for(var i = 0; i < tempCode.length; i++){
+          if(tempCode[i] == ''){
+              tempCode[i] = num;
+              break;
+          }else{
+              continue;
+          }
+      }
+      this.setState({passcode:tempCode});
+  };
+
+  _onPressCancel = () => {
+      let tempCode = this.state.passcode;
+      for(var i = tempCode.length -1; i >= 0; i--){
+          if(tempCode[i] != ''){
+              tempCode[i] = '';
+              break;
+          }else{
+              continue;
+          }
+      }
+      this.setState({passcode:tempCode});
+  };
   render() {
     let numbers = [
-      {id: 1},
       {id: 1},
       {id: 2},
       {id: 3},
@@ -53,36 +77,18 @@ class LockScreenPasscode extends Component {
         </View>
         <View style={{alignItems: 'center', justifyContent: 'center'}}>
           <View style={styles.numberContainer}>
-            <View style={styles.number}>
-              <Text style={styles.numText}> 1 </Text>
-            </View>
-            <View style={styles.number}>
-              <Text style={styles.numText}> 2 </Text>
-            </View>
-            <View style={styles.number}>
-              <Text style={styles.numText}> 3 </Text>
-            </View>
-            <View style={styles.number}>
-              <Text style={styles.numText}> 4 </Text>
-            </View>
-            <View style={styles.number}>
-              <Text style={styles.numText}> 5 </Text>
-            </View>
-            <View style={styles.number}>
-              <Text style={styles.numText}> 6 </Text>
-            </View>
-            <View style={styles.number}>
-              <Text style={styles.numText}> 7 </Text>
-            </View>
-            <View style={styles.number}>
-              <Text style={styles.numText}> 8 </Text>
-            </View>
-            <View style={styles.number}>
-              <Text style={styles.numText}> 9 </Text>
-            </View>
-            <View style={styles.number}>
-              <Text style={styles.numText}> 0 </Text>
-            </View>
+          {numbers.map(num => {
+              return(
+                  <TouchableOpacity 
+                  style={styles.number} 
+                  key ={num.id}
+                  onPress = {() => this._onPressNumber(num.id)}
+                  >
+                  <Text style={styles.numText}> {num.id} </Text>
+                  </TouchableOpacity>
+    
+            );
+          })}
             <View style={styles.buttons}>
               <TouchableOpacity>
                 <Text style={styles.buttonText}> Cancel </Text>
