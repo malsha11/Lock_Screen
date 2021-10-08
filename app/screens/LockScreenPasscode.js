@@ -17,3 +17,11 @@ class LockScreenPasscode extends Component {
         
       };
 }
+render() {
+  return (
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="light-content"/>
+      <View style={{marginTop:100,alignItems:'center',justifyContent:'center',}}>
+      <View>
+          <Text style={styles.passCodeText}> Enter your PIN Code</Text>
+      </View>
