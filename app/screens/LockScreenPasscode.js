@@ -81,7 +81,11 @@ class LockScreenPasscode extends Component {
                 </View>
                 <View style={styles.buttons}>
             <View>
-                
+                <Text style={styles.buttonText}> Cancel </Text>
+            </View>
+            </View>
+            </View>
+           
         </View>
         </SafeAreaView>
     );
@@ -166,7 +170,15 @@ const styles = StyleSheet.create({
       alignItems:'center',
      
       
- 
+  },
+  buttonText:{
+      fontFamily:'SEProText-Semiblod',
+      fontSize:16,
+      color:'#0a191a',
+      letterSpacing:-0.39,
+      textAlign:'right',
+     
+  },
 });
 
 
