@@ -47,7 +47,39 @@ class LockScreenPasscode extends Component {
 
             </View>
         </View>
-       
+        <View style={{ alignItems:'center',justifyContent:'center'}}>
+            <View style={styles.numberContainer}>
+                <View style={styles.number}>
+                    <Text style={styles.numText}> 1 </Text>
+                </View>
+                <View style={styles.number}>
+                    <Text style={styles.numText}> 2 </Text>
+                </View>
+                <View style={styles.number}>
+                    <Text style={styles.numText}> 3 </Text>
+                </View>
+                <View style={styles.number}>
+                    <Text style={styles.numText}> 4 </Text>
+                </View>
+                <View style={styles.number}>
+                    <Text style={styles.numText}> 5 </Text>
+                </View>
+                <View style={styles.number}>
+                    <Text style={styles.numText}> 6 </Text>
+                </View>
+                <View style={styles.number}>
+                    <Text style={styles.numText}> 7 </Text>
+                </View>
+                <View style={styles.number}>
+                    <Text style={styles.numText}> 8 </Text>
+                </View>
+                <View style={styles.number}>
+                    <Text style={styles.numText}> 9 </Text>
+                </View>
+                <View style={styles.number}>
+                    <Text style={styles.numText}> 0 </Text>
+                </View>
+                
            
         </View>
         </SafeAreaView>
@@ -104,7 +136,29 @@ const styles = StyleSheet.create({
       justifyContent:'center',
       alignItems:'center',
   },
+  numberContainer:{
+      flexDirection:'row',
+      flexWrap:'wrap',
+      marginTop:58,
+      width:282,
+      height:348,
+      alignItems:'center',
+      justifyContent:'center',
+      color: '#0a191a',
+      
+      
+  },
+  numText:{
+      fontFamily:'SFproDisplay-Regular',
+      fontSize:36,
+      color: '#0a191a',
+      letterSpacing:0,
+      textAlign:'center',
+      
+  },
+
   
+  },
 });
 
 
