@@ -79,8 +79,9 @@ class LockScreenPasscode extends Component {
                 <View style={styles.number}>
                     <Text style={styles.numText}> 0 </Text>
                 </View>
+                <View style={styles.buttons}>
+            <View>
                 
-           
         </View>
         </SafeAreaView>
     );
@@ -157,8 +158,15 @@ const styles = StyleSheet.create({
       
   },
 
-  
-  },
+  buttons:{
+      marginTop:73,
+      marginLeft:6,
+      marginRight:-65,
+      /*flexDirection:'row',*/
+      alignItems:'center',
+     
+      
+ 
 });
 
 
