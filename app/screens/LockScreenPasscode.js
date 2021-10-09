@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {
   View,
@@ -8,40 +9,41 @@ import {
   SafeAreaView,
   Dimensions,
   TouchableHighlight,
+  Image,
 } from 'react-native';
 
 class LockScreenPasscode extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      passcode: ['1', '', '3', ''],
+      passcode: ['', '', '', ''],
     };
   }
 
   _onPressNumber = num => {
-      let tempCode = this.state.passcode;
-      for(var i = 0; i < tempCode.length; i++){
-          if(tempCode[i] == ''){
-              tempCode[i] = num;
-              break;
-          }else{
-              continue;
-          }
+    let tempCode = this.state.passcode;
+    for (var i = 0; i < tempCode.length; i++) {
+      if (tempCode[i] == '') {
+        tempCode[i] = num - -1;
+        break;
+      } else {
+        continue;
       }
-      this.setState({passcode:tempCode});
+    }
+    this.setState({passcode: tempCode});
   };
 
   _onPressCancel = () => {
-      let tempCode = this.state.passcode;
-      for(var i = tempCode.length -1; i >= 0; i--){
-          if(tempCode[i] != ''){
-              tempCode[i] = '';
-              break;
-          }else{
-              continue;
-          }
+    let tempCode = this.state.passcode;
+    for (var i = tempCode.length - 1; i >= 0; i--) {
+      if (tempCode[i] != '') {
+        tempCode[i] = '';
+        break;
+      } else {
+        continue;
       }
-      this.setState({passcode:tempCode});
+    }
+    this.setState({passcode: tempCode});
   };
   render() {
     let numbers = [
@@ -77,21 +79,24 @@ class LockScreenPasscode extends Component {
         </View>
         <View style={{alignItems: 'center', justifyContent: 'center'}}>
           <View style={styles.numberContainer}>
-          {numbers.map(num => {
-              return(
-                  <TouchableOpacity 
-                  style={styles.number} 
-                  key ={num.id}
-                  onPress = {() => this._onPressNumber(num.id)}
-                  >
+            {numbers.map(num => {
+              return (
+                <TouchableOpacity
+                  style={styles.number}
+                  key={num.id}
+                  onPress={() => this._onPressNumber(num.id)}>
                   <Text style={styles.numText}> {num.id} </Text>
-                  </TouchableOpacity>
-    
-            );
-          })}
+                </TouchableOpacity>
+              );
+            })}
             <View style={styles.buttons}>
-              <TouchableOpacity>
-                <Text style={styles.buttonText}> Cancel </Text>
+              <TouchableOpacity onPress={() => this._onPressCancel()}>
+                <Image
+                  source={require('../assets/Images/Icon/cansel_button.jpg')}
+                />
+                <View>
+                  <Text style={styles.deleteText}>Delete</Text>
+                </View>
               </TouchableOpacity>
             </View>
           </View>
@@ -105,19 +110,23 @@ export default LockScreenPasscode;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
+    justifyContent: 'space-around',
   },
   passCodeText: {
-    fontFamily: 'Roboto-Regular',
+    fontFamily: 'Roboto-Italic',
     fontSize: 25,
-    color: '#0a191a',
+    color: '#92969f',
     letterSpacing: 0.34,
     lineHeight: 25,
+    marginTop: 10,
   },
   codeContainer: {
-    marginTop: 12,
+    marginTop: 145,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    marginBottom: -150,
   },
   code1: {
     width: 10,
@@ -130,8 +139,8 @@ const styles = StyleSheet.create({
   },
 
   code2: {
-    width: 13,
-    height: 16,
+    width: 12,
+    height: 14,
     borderRadius: 13,
     borderWidth: 2,
     borderColor: '#0ba39c',
@@ -143,7 +152,7 @@ const styles = StyleSheet.create({
     width: 75,
     height: 75,
     borderRadius: 75,
-    backgroundColor: 'rgba(255,255,255,0.1)',
+    backgroundColor: '#f0f3fa',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -158,25 +167,27 @@ const styles = StyleSheet.create({
     color: '#0a191a',
   },
   numText: {
-    fontFamily: 'SFproDisplay-Regular',
+    fontFamily: 'Roboto',
     fontSize: 36,
-    color: '#0a191a',
+    color:'#92969f',
     letterSpacing: 0,
     textAlign: 'center',
   },
 
   buttons: {
-    marginTop: 73,
-    marginLeft: 6,
-    marginRight: -65,
     /*flexDirection:'row',*/
     alignItems: 'center',
+    marginRight: -65,
+    color: '#b4bbbe',
   },
-  buttonText: {
-    fontFamily: 'SEProText-Semiblod',
-    fontSize: 16,
-    color: '#0a191a',
-    letterSpacing: -0.39,
-    textAlign: 'right',
+  deleteText: {
+    fontFamily: 'Roboto',
+    fontSize: 15,
+    color: '#92969f',
+    letterSpacing: 0.34,
+    lineHeight: 25,
+    marginTop: -5,
+    marginLeft: 10,
+    color: '#b4bbbe',
   },
 });
