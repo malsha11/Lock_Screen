@@ -8,7 +8,7 @@ export default class Root extends Component {
   render() {
     return (
       /*<LockScreenPasscode/>*/
-      <ApplicationLocked></ApplicationLocked>
+      <ApplicationLocked/>
     );
   }
 }

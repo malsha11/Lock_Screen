@@ -9,6 +9,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 
+
 class ApplicationLocked extends Component {
   constructor(props) {
     super(props);
@@ -27,6 +28,9 @@ class ApplicationLocked extends Component {
           <View>
             <Text style={styles.passCodeText}> Maximum attempts reached </Text>
           </View>
+        </View>
+        <View>
+          <Text style={styles.timeText}> 4 : 57 </Text>
         </View>
         <TouchableOpacity>
           <View style={styles.buttons}>
@@ -53,25 +57,36 @@ const styles = StyleSheet.create({
     color: '#92969f',
     letterSpacing: 0.34,
     lineHeight: 25,
-    marginTop: -200,
+    marginTop: -100,
   },
 
   buttons: {
-    /*flexDirection:'row',*/
     alignItems: 'center',
     marginRight: 65,
     marginLeft: 155,
     color: '#b4bbbe',
     backgroundColor: '#0ba39c',
     height: 60,
-    width: 110,
-    marginBottom:-50,
+    width: 150,
+    marginBottom: -50,
   },
   quitText: {
-    fontFamily: 'Roboto',
+    fontFamily: 'Roboto-Black',
     fontSize: 25,
-    color: '#92969f',
     letterSpacing: 0.34,
     color: 'black',
+    textAlign:'center',
+    
   },
+
+  timeText: {
+    fontFamily: 'Roboto-Black',
+    fontSize: 25,
+    color: 'black',
+    letterSpacing: 0.34,
+    lineHeight: 25,
+    marginTop: -200,
+    marginLeft: 170,
+  },
+   
 });

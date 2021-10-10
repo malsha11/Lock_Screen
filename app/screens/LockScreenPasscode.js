@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   passCodeText: {
-    fontFamily: 'Roboto-Italic',
+    fontFamily: 'Roboto-Black',
     fontSize: 25,
     color: '#92969f',
     letterSpacing: 0.34,
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     color: '#0a191a',
   },
   numText: {
-    fontFamily: 'Roboto',
+    fontFamily: 'Roboto-Black',
     fontSize: 36,
     color: '#92969f',
     letterSpacing: 0,
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     color: '#b4bbbe',
   },
   deleteText: {
-    fontFamily: 'Roboto',
+    fontFamily: 'Roboto-Black',
     fontSize: 15,
     color: '#92969f',
     letterSpacing: 0.34,
