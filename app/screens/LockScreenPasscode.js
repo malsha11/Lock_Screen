@@ -81,12 +81,14 @@ class LockScreenPasscode extends Component {
           <View style={styles.numberContainer}>
             {numbers.map(num => {
               return (
-                <TouchableOpacity
+                <TouchableHighlight
+                  underlayColor="#6ec8c9"
+                  activeOpacity={0.6}
                   style={styles.number}
                   key={num.id}
                   onPress={() => this._onPressNumber(num.id)}>
                   <Text style={styles.numText}> {num.id} </Text>
-                </TouchableOpacity>
+                </TouchableHighlight>
               );
             })}
             <View style={styles.buttons}>
@@ -169,7 +171,7 @@ const styles = StyleSheet.create({
   numText: {
     fontFamily: 'Roboto',
     fontSize: 36,
-    color:'#92969f',
+    color: '#92969f',
     letterSpacing: 0,
     textAlign: 'center',
   },
@@ -187,7 +189,15 @@ const styles = StyleSheet.create({
     letterSpacing: 0.34,
     lineHeight: 25,
     marginTop: -5,
-    marginLeft: 10,
+    marginLeft: 15,
     color: '#b4bbbe',
+  },
+
+  image: {
+    width: 32,
+    height: 35,
+
+    marginLeft: 50,
+    marginTop: 50,
   },
 });
