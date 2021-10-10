@@ -9,7 +9,6 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-
 class ApplicationLocked extends Component {
   constructor(props) {
     super(props);
@@ -31,6 +30,16 @@ class ApplicationLocked extends Component {
         </View>
         <View>
           <Text style={styles.timeText}> 4 : 57 </Text>
+        </View>
+        <View style={styles.circle}>
+          <Text> Icon </Text>
+        </View>
+        <View>
+          <Text style={styles.lockedText}>
+            {' '}
+            To protect your information, access has been locked for 5 minutes.
+            Come back later and try again.{' '}
+          </Text>
         </View>
         <TouchableOpacity>
           <View style={styles.buttons}>
@@ -58,25 +67,28 @@ const styles = StyleSheet.create({
     letterSpacing: 0.34,
     lineHeight: 25,
     marginTop: -100,
+    marginBottom: 50,
   },
 
   buttons: {
-    alignItems: 'center',
     marginRight: 65,
     marginLeft: 155,
     color: '#b4bbbe',
     backgroundColor: '#0ba39c',
     height: 60,
     width: 150,
-    marginBottom: -50,
+    marginBottom: 20,
+    marginTop: 160,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   quitText: {
     fontFamily: 'Roboto-Black',
     fontSize: 25,
     letterSpacing: 0.34,
     color: 'black',
-    textAlign:'center',
-    
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   timeText: {
@@ -85,8 +97,30 @@ const styles = StyleSheet.create({
     color: 'black',
     letterSpacing: 0.34,
     lineHeight: 25,
-    marginTop: -200,
+    marginTop: -100,
+    marginLeft: 170,
+    marginBottom: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  circle: {
+    width: 100,
+    height: 100,
+    backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 100,
     marginLeft: 170,
   },
-   
+
+  lockedText: {
+    fontFamily: 'Roboto-black',
+    fontSize: 20,
+    /*color: '#92969f',*/
+    letterSpacing: 0.34,
+    lineHeight: 25,
+    marginTop: 150,
+    marginBottom: 50,
+  },
 });
