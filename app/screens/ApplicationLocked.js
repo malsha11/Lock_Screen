@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   StatusBar,
   SafeAreaView,
+  Image,
 } from 'react-native';
 
 class ApplicationLocked extends Component {
@@ -29,16 +30,19 @@ class ApplicationLocked extends Component {
           </View>
         </View>
         <View>
-          <Text style={styles.timeText}> 4 : 57 </Text>
+          <Text style={styles.timeText}> 04 : 57 </Text>
         </View>
         <View style={styles.circle}>
-          <Text> Icon </Text>
+          <Image
+            styles={styles.imageLocked}
+            source={require('../assets/Images/Icon/Locked_icon.jpg')}
+          />
         </View>
         <View>
           <Text style={styles.lockedText}>
-            {' '}
-            To protect your information, access has been locked for 5 minutes.
-            Come back later and try again.{' '}
+          {'\n'}
+            To protect your information, access {'\n'} has been locked for 5
+            minutes. {'\n'} Come back later and try again.
           </Text>
         </View>
         <TouchableOpacity>
@@ -61,13 +65,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   passCodeText: {
-    fontFamily: 'Roboto-Italic',
-    fontSize: 25,
+    fontFamily: 'Roboto-black',
+    fontSize: 27,
     color: '#92969f',
     letterSpacing: 0.34,
     lineHeight: 25,
-    marginTop: -100,
-    marginBottom: 50,
+    marginTop: -10,
+    marginBottom: 100,
   },
 
   buttons: {
@@ -97,9 +101,9 @@ const styles = StyleSheet.create({
     color: 'black',
     letterSpacing: 0.34,
     lineHeight: 25,
-    marginTop: -100,
+    marginTop: 70,
     marginLeft: 170,
-    marginBottom: 50,
+    marginBottom: 140,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -116,11 +120,19 @@ const styles = StyleSheet.create({
 
   lockedText: {
     fontFamily: 'Roboto-black',
-    fontSize: 20,
+    fontSize: 25,
     /*color: '#92969f',*/
     letterSpacing: 0.34,
-    lineHeight: 25,
+    lineHeight: 20,
     marginTop: 150,
-    marginBottom: 50,
+    marginBottom: 20,
+    alignItems: 'center',
+
+  },
+  imageLocked: {
+    width: 32,
+    height: 35,
+    marginLeft: 50,
+    marginTop: 50,
   },
 });

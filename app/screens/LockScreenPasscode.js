@@ -82,10 +82,10 @@ class LockScreenPasscode extends Component {
             {numbers.map(num => {
               return (
                 <TouchableHighlight
-                  underlayColor="#6ec8c9"
-                  activeOpacity={0.6}
                   style={styles.number}
                   key={num.id}
+                  underlayColor="#6ec8c9"
+                  activeOpacity={0.6}
                   onPress={() => this._onPressNumber(num.id)}>
                   <Text style={styles.numText}> {num.id} </Text>
                 </TouchableHighlight>
@@ -94,6 +94,7 @@ class LockScreenPasscode extends Component {
             <View style={styles.buttons}>
               <TouchableOpacity onPress={() => this._onPressCancel()}>
                 <Image
+                  styles={styles.image}
                   source={require('../assets/Images/Icon/cansel_button.jpg')}
                 />
                 <View>
@@ -196,8 +197,8 @@ const styles = StyleSheet.create({
   image: {
     width: 32,
     height: 35,
-
     marginLeft: 50,
     marginTop: 50,
+    color: 'yellow',
   },
 });
