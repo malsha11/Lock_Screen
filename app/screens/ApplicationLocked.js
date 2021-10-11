@@ -1,5 +1,4 @@
 /* eslint-disable react-native/no-inline-styles */
-/* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {
   View,
@@ -11,7 +10,9 @@ import {
   Image,
 } from 'react-native';
 
+/*create a Application Locaked class*/
 class ApplicationLocked extends Component {
+  /*constructor*/
   constructor(props) {
     super(props);
     this.state = {
@@ -25,17 +26,16 @@ class ApplicationLocked extends Component {
       const {seconds, minutes} = this.state;
       if (seconds > 0) {
         this.setState(({seconds}) => ({
-          seconds: seconds -  1,
-        }));;
+          seconds: seconds - 1,
+        }));
       }
 
       if (seconds === 0) {
-        if  (minutes === 0) {
+        if (minutes === 0) {
           clearInterval(this.myInterval);
-
-        }  else {
+        } else {
           this.setState(({minutes}) => ({
-            minutes: minutes -  1,
+            minutes: minutes - 1,
             seconds: 59,
           }));
         }
@@ -48,43 +48,51 @@ class ApplicationLocked extends Component {
         <StatusBar barStyle="light-content" />
         <View
           style={{
-            marginTop: 100,
+            marginTop: 50,
             alignItems: 'center',
             justifyContent: 'center',
           }}>
           <View>
-            <Text style={styles.passCodeText}> Maximum attempts reached </Text>
+            <Text style={styles.reachedText}> Maximum attemps reached</Text>
           </View>
-        </View>
-        <View style={styles.main}>
-          <View style={styles.timecount}>
-            <Text style={styles.timeText}>
+          <View
+            style={{
+              marginTop: 60,
+              borderColor: 'rgb(230, 231, 233)',
+              borderRadius: 4,
+              borderWidth: 2,
+              paddingBottom: 10,
+              paddingLeft: 30,
+              paddingRight: 30,
+              paddingTop: 10,
+            }}>
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={{
+                color: '#445878',
+                fontFamily: 'Courier',
+                fontSize: 28,
+              }}>
               {this.state.minutes}:
-              {this.state.seconds < 10 ? ' 0 ' : this.state.seconds}
+              {this.state.seconds < 10 ? '0' : this.state.seconds}
             </Text>
           </View>
-        </View>
-        <View style={styles.circle}>
-          <Image
-            styles={styles.imageLocked}
-            source={require('../assets/Images/Icon/Locked_icon.jpg')}
-          />
-        </View>
-
-        <View>
-          <Text style={styles.lockedText}>
-            {'\n'}
-            To protect your information, access {'\n'} has been locked for 5
-            minutes. {'\n'} Come back later and try again.
-          </Text>
-        </View>
-        <TouchableOpacity>
-          <View style={styles.buttons}>
-            <View>
-              <Text style={styles.quitText}>Quit</Text>
-            </View>
+          <View>
+            <Image source={require('../assets/Images/Icon/Locked_icon.jpg')} />
           </View>
-        </TouchableOpacity>
+          <View>
+            <Text style={styles.lockedText}>
+              {'\n'}
+              To protect your information, access {'\n'} has been locked for 5
+              minutes. {'\n'} Come back later and try again.
+            </Text>
+          </View>
+          <TouchableOpacity TouchableOpacity={0.5} style={styles.buttons}>
+            <Text style={styles.quitText}>Quit</Text>
+          </TouchableOpacity>
+        </View>
       </SafeAreaView>
     );
   }
@@ -97,21 +105,20 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'space-around',
   },
-  passCodeText: {
+  reachedText: {
     fontFamily: 'Roboto-black',
     fontSize: 27,
     color: '#92969f',
     letterSpacing: 0.34,
     lineHeight: 25,
     marginTop: -10,
-    marginBottom: 100,
+    marginBottom: 50,
   },
 
   buttons: {
-    marginRight: 65,
-    marginLeft: 155,
     color: '#b4bbbe',
     backgroundColor: '#0ba39c',
+    borderColor: 'red',
     height: 60,
     width: 150,
     marginBottom: 60,
@@ -130,12 +137,12 @@ const styles = StyleSheet.create({
 
   timeText: {
     fontFamily: 'Roboto-Black',
-    fontSize: 25,
+    fontSize: 30,
     color: 'black',
     letterSpacing: 0.34,
-    lineHeight: 25,
+    lineHeight: 100,
     marginTop: 70,
-    marginLeft: 170,
+    marginLeft: 180,
     marginBottom: 140,
     justifyContent: 'center',
     alignItems: 'center',
@@ -162,21 +169,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   imageLocked: {
-    width: 32,
-    height: 35,
+    width: 100,
+    height: 100,
     marginLeft: 50,
-    marginTop: 50,
-  },
-  main: {
-    fontFamily: 'Roboto-black',
-    fontSize: 25,
-    /*color: '#92969f',*/
-    letterSpacing: 0.34,
-    lineHeight: 20,
-  },
-
-  timecount: {
-    fontFamily: 'Roboto-black',
-    fontSize: 25,
+    marginTop: 40,
+    marginBottom: 400,
   },
 });
