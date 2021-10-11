@@ -79,7 +79,12 @@ class ApplicationLocked extends Component {
               {this.state.seconds < 10 ? '0' : this.state.seconds}
             </Text>
           </View>
-          <View>
+          <View
+            style={{
+              marginTop: 90,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
             <Image source={require('../assets/Images/Icon/Locked_icon.jpg')} />
           </View>
           <View>
@@ -111,7 +116,7 @@ const styles = StyleSheet.create({
     color: '#92969f',
     letterSpacing: 0.34,
     lineHeight: 25,
-    marginTop: -10,
+    marginTop: 100,
     marginBottom: 50,
   },
 
@@ -121,14 +126,13 @@ const styles = StyleSheet.create({
     borderColor: 'red',
     height: 60,
     width: 150,
-    marginBottom: 60,
-    marginTop: 100,
+    marginBottom: 150,
     justifyContent: 'center',
     alignItems: 'center',
   },
   quitText: {
     fontFamily: 'Roboto-Black',
-    fontSize: 25,
+    fontSize: 23,
     letterSpacing: 0.34,
     color: 'black',
     justifyContent: 'center',
@@ -148,24 +152,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  circle: {
-    width: 100,
-    height: 100,
-    backgroundColor: 'red',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 100,
-    marginLeft: 170,
-  },
-
   lockedText: {
     fontFamily: 'Roboto-black',
-    fontSize: 25,
-    /*color: '#92969f',*/
+    fontSize: 23,
+    color: '#92969f',
     letterSpacing: 0.34,
-    lineHeight: 20,
+    lineHeight: 25,
     marginTop: 150,
-    marginBottom: 20,
+    marginBottom: 70,
     alignItems: 'center',
   },
   imageLocked: {
@@ -173,6 +167,6 @@ const styles = StyleSheet.create({
     height: 100,
     marginLeft: 50,
     marginTop: 40,
-    marginBottom: 400,
+    marginBottom: 100,
   },
 });
