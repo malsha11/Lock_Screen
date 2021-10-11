@@ -18,6 +18,7 @@ class LockScreenPasscode extends Component {
     this.state = {
       passcode: ['', '', '', ''],
     };
+    this.state.passcode
   }
 
   _onPressNumber = num => {

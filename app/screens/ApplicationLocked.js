@@ -1,4 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
+/* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {
   View,
@@ -13,7 +14,33 @@ import {
 class ApplicationLocked extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      minutes: 1,
+      seconds: 0,
+    };
+  }
+
+  componentDidMount() {
+    this.myInterval = setInterval(() => {
+      const {seconds, minutes} = this.state;
+      if (seconds > 0) {
+        this.setState(({seconds}) => ({
+          seconds: seconds -  1,
+        }));;
+      }
+
+      if (seconds === 0) {
+        if  (minutes === 0) {
+          clearInterval(this.myInterval);
+
+        }  else {
+          this.setState(({minutes}) => ({
+            minutes: minutes -  1,
+            seconds: 59,
+          }));
+        }
+      }
+    }, 1000);
   }
   render() {
     return (
@@ -29,8 +56,13 @@ class ApplicationLocked extends Component {
             <Text style={styles.passCodeText}> Maximum attempts reached </Text>
           </View>
         </View>
-        <View>
-          <Text style={styles.timeText}> 04 : 57 </Text>
+        <View style={styles.main}>
+          <View style={styles.timecount}>
+            <Text style={styles.timeText}>
+              {this.state.minutes}:
+              {this.state.seconds < 10 ? ' 0 ' : this.state.seconds}
+            </Text>
+          </View>
         </View>
         <View style={styles.circle}>
           <Image
@@ -38,9 +70,10 @@ class ApplicationLocked extends Component {
             source={require('../assets/Images/Icon/Locked_icon.jpg')}
           />
         </View>
+
         <View>
           <Text style={styles.lockedText}>
-          {'\n'}
+            {'\n'}
             To protect your information, access {'\n'} has been locked for 5
             minutes. {'\n'} Come back later and try again.
           </Text>
@@ -81,8 +114,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#0ba39c',
     height: 60,
     width: 150,
-    marginBottom: 20,
-    marginTop: 160,
+    marginBottom: 60,
+    marginTop: 100,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -127,12 +160,23 @@ const styles = StyleSheet.create({
     marginTop: 150,
     marginBottom: 20,
     alignItems: 'center',
-
   },
   imageLocked: {
     width: 32,
     height: 35,
     marginLeft: 50,
     marginTop: 50,
+  },
+  main: {
+    fontFamily: 'Roboto-black',
+    fontSize: 25,
+    /*color: '#92969f',*/
+    letterSpacing: 0.34,
+    lineHeight: 20,
+  },
+
+  timecount: {
+    fontFamily: 'Roboto-black',
+    fontSize: 25,
   },
 });
