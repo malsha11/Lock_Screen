@@ -17,13 +17,13 @@ class LockScreenPasscode extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      passcode: ['', '', '', ''],
+      keycode: ['', '', '', ''],
     };
-    this.state.passcode;
+    this.state.keycode;
   }
 
-  _onPressNumber = num => {
-    let tempCode = this.state.passcode;
+  numberOnPress = num => {
+    let tempCode = this.state.keycode;
     for (var i = 0; i < tempCode.length; i++) {
       if (tempCode[i] == '') {
         tempCode[i] = num;
@@ -32,11 +32,11 @@ class LockScreenPasscode extends Component {
         continue;
       }
     }
-    this.setState({passcode: tempCode});
+    this.setState({keycode: tempCode});
   };
 
-  _onPressCancel = () => {
-    let tempCode = this.state.passcode;
+  cancelOnPress = () => {
+    let tempCode = this.state.keycode;
     for (var i = tempCode.length - 1; i >= 0; i--) {
       if (tempCode[i] != '') {
         tempCode[i] = '';
@@ -45,11 +45,11 @@ class LockScreenPasscode extends Component {
         continue;
       }
     }
-    this.setState({passcode: tempCode});
+    this.setState({keycode: tempCode});
   };
 
-  _popUpMessageBox = () => {
-    let text = this.state.passcode.toString();
+  popUpMessageBox = () => {
+    let text = this.state.keycode.toString();
     if (text == '1,2,3,4') {
       Alert.alert('Success!..', ' App will redirect you to the home now!', [
         {text: 'ok.'},
@@ -91,7 +91,7 @@ class LockScreenPasscode extends Component {
             <Text style={styles.passCodeText}> Enter your PIN Code</Text>
           </View>
           <View style={styles.codeContainer}>
-            {this.state.passcode.map(p => {
+            {this.state.keycode.map(p => {
               let style = p != '' ? styles.code2 : styles.code1;
               return <View style={style} />;
             })}
@@ -106,13 +106,13 @@ class LockScreenPasscode extends Component {
                   key={num.id}
                   underlayColor="#6ec8c9"
                   activeOpacity={0.5}
-                  onPress={() => this._onPressNumber(num.id)}>
+                  onPress={() => this.numberOnPress(num.id)}>
                   <Text style={styles.numText}> {num.id} </Text>
                 </TouchableHighlight>
               );
             })}
-            <View style={styles.buttons}>
-              <TouchableOpacity onPress={() => this._onPressCancel()}>
+            <View style={styles.deleteButton}>
+              <TouchableOpacity onPress={() => this.cancelOnPress()}>
                 <Image
                   styles={styles.image}
                   source={require('../assets/Images/Icon/cansel_button.jpg')}
@@ -121,7 +121,7 @@ class LockScreenPasscode extends Component {
               </TouchableOpacity>
               <TouchableHighlight
                 underlayColor="#F3F3F3"
-                onPress={() => this._popUpMessageBox()}
+                onPress={() => this.popUpMessageBox()}
                 activeOpacity={0.5}
                 style={styles.okbutton}>
                 <Text style={styles.okbuttonText}>OK</Text>
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 
-  buttons: {
+  deleteButton: {
     /*flexDirection:'row',*/
     alignItems: 'center',
     marginRight: -65,
@@ -230,10 +230,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     /*marginLeft: '-65',*/
     color: '#b4bbbe',
+    marginRight: -10,
+
   },
   okbuttonText: {
     fontFamily: 'Roboto-Black',
-    fontSize: 36,
+    fontSize: 25,
     color: '#92969f',
     letterSpacing: 0,
     textAlign: 'center',
