@@ -26,7 +26,7 @@ class LockScreenPasscode extends Component {
     let tempCode = this.state.passcode;
     for (var i = 0; i < tempCode.length; i++) {
       if (tempCode[i] == '') {
-        tempCode[i] = num ;
+        tempCode[i] = num;
         break;
       } else {
         continue;
@@ -48,7 +48,7 @@ class LockScreenPasscode extends Component {
     this.setState({passcode: tempCode});
   };
 
-  _popUpMsg = () => {
+  _popUpMessageBox = () => {
     let text = this.state.passcode.toString();
     if (text == '1,2,3,4') {
       Alert.alert('Success!..', ' App will redirect you to the home now!', [
@@ -105,7 +105,7 @@ class LockScreenPasscode extends Component {
                   style={styles.number}
                   key={num.id}
                   underlayColor="#6ec8c9"
-                  activeOpacity={0.6}
+                  activeOpacity={0.5}
                   onPress={() => this._onPressNumber(num.id)}>
                   <Text style={styles.numText}> {num.id} </Text>
                 </TouchableHighlight>
@@ -117,18 +117,14 @@ class LockScreenPasscode extends Component {
                   styles={styles.image}
                   source={require('../assets/Images/Icon/cansel_button.jpg')}
                 />
-                <View>
-                  <Text style={styles.deleteText}>Delete</Text>
-                </View>
+                <Text style={styles.deleteText}>Delete</Text>
               </TouchableOpacity>
-            </View>
-            <View style={styles.buttons}>
               <TouchableHighlight
                 underlayColor="#F3F3F3"
-                onPress={() => this._popUpMsg()}
+                onPress={() => this._popUpMessageBox()}
                 activeOpacity={0.5}
-                style={styles.button}>
-                <Text style={styles.buttonText}>OK</Text>
+                style={styles.okbutton}>
+                <Text style={styles.okbuttonText}>OK</Text>
               </TouchableHighlight>
             </View>
           </View>
@@ -230,12 +226,12 @@ const styles = StyleSheet.create({
     marginTop: 50,
     color: 'yellow',
   },
-  button: {
+  okbutton: {
     alignItems: 'center',
-    marginLeft: '-65',
+    /*marginLeft: '-65',*/
     color: '#b4bbbe',
   },
-  buttonText: {
+  okbuttonText: {
     fontFamily: 'Roboto-Black',
     fontSize: 36,
     color: '#92969f',

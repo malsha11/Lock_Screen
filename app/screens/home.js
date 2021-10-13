@@ -184,3 +184,53 @@ const styles = StyleSheet.create({
   });
   
   
+  return (
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="light-content" />
+      <View
+        style={{
+          marginTop: 50,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <View>
+          <Text style={styles.TextPasscode}>Enter Your PIN Code</Text>
+        </View>
+        <View style={styles.codeContainer}>
+          {this.state.passcode.map(p => {
+            let style = p != '' ? styles.code2 : styles.code1;
+            return <View style={style} />;
+          })}
+        </View>
+      </View>
+      <View style={{alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.numbercontainer}>
+          {numbers.map(num => {
+            return (
+              <TouchableHighlight
+                activeOpacity={0.5}
+                underlayColor="#6FC5C8"
+                onPress={() => this._onPressNumber(num.id)}
+                style={styles.number}
+                key={num.id}>
+                <Text style={styles.numberText}> {num.id} </Text>
+              </TouchableHighlight>
+            );
+          })}
+          <View style={styles.botton}>
+            <TouchableOpacity onPress={() => this._onPressCancel()}>
+              <Text style={styles.buttonText}> cancel </Text>
+            </TouchableOpacity>
+
+            <TouchableHighlight
+              underlayColor="#F3F3F3"
+              onPress={() => this._popUpMsg()}
+              activeOpacity={0.5}
+              style={styles.button}>
+              <Text style={styles.buttonText}>OK</Text>
+            </TouchableHighlight>
+          </View>
+        </View>
+      </View>
+    </SafeAreaView>
+  );
