@@ -9,6 +9,7 @@ import {
   SafeAreaView,
   Dimensions,
   TouchableHighlight,
+  Alert,
   Image,
 } from 'react-native';
 
@@ -18,14 +19,14 @@ class LockScreenPasscode extends Component {
     this.state = {
       passcode: ['', '', '', ''],
     };
-    this.state.passcode
+    this.state.passcode;
   }
 
   _onPressNumber = num => {
     let tempCode = this.state.passcode;
     for (var i = 0; i < tempCode.length; i++) {
       if (tempCode[i] == '') {
-        tempCode[i] = num - -1;
+        tempCode[i] = num ;
         break;
       } else {
         continue;
@@ -46,6 +47,24 @@ class LockScreenPasscode extends Component {
     }
     this.setState({passcode: tempCode});
   };
+
+  _popUpMsg = () => {
+    let text = this.state.passcode.toString();
+    if (text == '1,2,3,4') {
+      Alert.alert('Success!..', ' App will redirect you to the home now!', [
+        {text: 'ok.'},
+      ]);
+    } else {
+      for (var i = 1; i <= 3; i++) {
+        if (text != '1,2,3,4') {
+          Alert.alert('Retry!..', ' Please enter your PIN Again!', [
+            {text: 'ok.'},
+          ]);
+        }
+      }
+    }
+  };
+
   render() {
     let numbers = [
       {id: 1},
@@ -102,6 +121,15 @@ class LockScreenPasscode extends Component {
                   <Text style={styles.deleteText}>Delete</Text>
                 </View>
               </TouchableOpacity>
+            </View>
+            <View style={styles.buttons}>
+              <TouchableHighlight
+                underlayColor="#F3F3F3"
+                onPress={() => this._popUpMsg()}
+                activeOpacity={0.5}
+                style={styles.button}>
+                <Text style={styles.buttonText}>OK</Text>
+              </TouchableHighlight>
             </View>
           </View>
         </View>
@@ -201,5 +229,17 @@ const styles = StyleSheet.create({
     marginLeft: 50,
     marginTop: 50,
     color: 'yellow',
+  },
+  button: {
+    alignItems: 'center',
+    marginLeft: '-65',
+    color: '#b4bbbe',
+  },
+  buttonText: {
+    fontFamily: 'Roboto-Black',
+    fontSize: 36,
+    color: '#92969f',
+    letterSpacing: 0,
+    textAlign: 'center',
   },
 });

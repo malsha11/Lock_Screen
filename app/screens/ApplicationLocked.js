@@ -20,7 +20,7 @@ class ApplicationLocked extends Component {
       seconds: 0,
     };
   }
-
+  /* Time Count*/
   componentDidMount() {
     this.myInterval = setInterval(() => {
       const {seconds, minutes} = this.state;
@@ -42,6 +42,7 @@ class ApplicationLocked extends Component {
       }
     }, 1000);
   }
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
@@ -104,6 +105,7 @@ class ApplicationLocked extends Component {
 }
 export default ApplicationLocked;
 
+/* style sheet*/
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -116,17 +118,15 @@ const styles = StyleSheet.create({
     color: '#92969f',
     letterSpacing: 0.34,
     lineHeight: 25,
-    marginTop: 100,
-    marginBottom: 50,
+    marginTop: 150,
+    marginBottom: 30,
   },
 
   buttons: {
-    color: '#b4bbbe',
-    backgroundColor: '#0ba39c',
-    borderColor: 'red',
+    backgroundColor: '#85c6c7',
     height: 60,
     width: 150,
-    marginBottom: 150,
+    marginBottom: 200,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -134,7 +134,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-Black',
     fontSize: 23,
     letterSpacing: 0.34,
-    color: 'black',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -155,7 +154,7 @@ const styles = StyleSheet.create({
   lockedText: {
     fontFamily: 'Roboto-black',
     fontSize: 23,
-    color: '#92969f',
+    color: '#3d3d38',
     letterSpacing: 0.34,
     lineHeight: 25,
     marginTop: 150,
